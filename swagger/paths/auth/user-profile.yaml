@@ -1,0 +1,14 @@
+tags:
+  - Auth
+summary: User Profile
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+
+responses:
+  '200':
+    description: User profile display successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

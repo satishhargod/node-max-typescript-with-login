@@ -1,0 +1,28 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnPaste": false, // required
+  "editor.formatOnType": false, // required
+  "editor.formatOnSave": false, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "vs-code-prettier-eslint.prettierLast": true,
+  "cSpell.words": [
+    "byweekday",
+    "dtstart",
+    "fieldname",
+    "paytabs",
+    "proleven",
+    "Proleven",
+    "querybuilder",
+    "rrule",
+    "updation",
+    "WASAPI",
+    "webpush"
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

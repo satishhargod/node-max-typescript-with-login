@@ -1,0 +1,24 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "*": ["node_modules/*",  "src/interfaces/types/*.d.ts"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@logger": ["./src/utils/logger/index.ts"],
+    },
+    "typeRoots" : [
+      "@types", // custom merged types must be first in a list
+      "node_modules/@types",
+    ],
+  },
+  "exclude": ["node_modules"]
+}

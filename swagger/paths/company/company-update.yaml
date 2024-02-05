@@ -1,0 +1,52 @@
+tags:
+  - Company
+summary: Update a new company
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+parameters:
+  - name: slug
+    in: path
+    description: Slug of the company to retrieve
+    required: true
+    type: string
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            example: Test
+          legal_name:
+            type: string
+            example: Test
+          registration_number:
+            type: string
+            example: '124234234'
+          website:
+            type: string
+            example: http:asdasdd
+          industry:
+            type: string
+            example: sdfsdf
+          description:
+            type: string
+            example: sdfsdf
+          size:
+            type: string
+            example: '10'
+          status:
+            type: string
+            example: ACTIVE
+          company_logo:
+            type: file
+            format: binary
+responses:
+  '200':
+    description: Company updated successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

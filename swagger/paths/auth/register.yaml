@@ -1,0 +1,97 @@
+tags:
+  - Auth
+summary: Register a new company
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          company_name:
+            type: string
+            example: Test Pvt Ltd.
+          company_legal_name:
+            type: string
+            example: Test Services PVT LTD.
+          company_registration_number:
+            type: string
+            example: '96564748451'
+          company_email:
+            type: string
+            example: testcompany@yopmail.com
+          company_address_l1:
+            type: string
+            example: Address L1
+          company_address_l2:
+            type: string
+            example: Address L2
+          company_address_city:
+            type: string
+            example: Ahmedabad
+          company_address_state:
+            type: string
+            example: GJ
+          company_address_country:
+            type: string
+            example: India
+          company_address_zip:
+            type: string
+            example: '382481'
+          company_website:
+            type: string
+            example: http://appdemoserver.com
+          company_industry:
+            type: string
+            example: IT
+          company_description:
+            type: string
+            example: Test
+          company_size:
+            type: string
+            example: '5'
+          manager_first_name:
+            type: string
+            example: Jonh
+          manager_last_name:
+            type: string
+            example: Doe
+          manager_job_title:
+            type: string
+            example: Owner
+          manager_email:
+            type: string
+            example: john@yopmail.com
+          manager_contact:
+            type: string
+            example: '9638527410'
+          manager_address_l1:
+            type: string
+            example: XYZ Lane
+          manager_address_l2:
+            type: string
+            example: Zoe Steet
+          manager_address_city:
+            type: string
+            example: Mumbai
+          manager_address_state:
+            type: string
+            example: MH
+          manager_address_country:
+            type: string
+            example: India
+          manager_address_zip:
+            type: string
+            example: '982211'
+          company_logo:
+            type: file
+            format: binary
+responses:
+  '200':
+    description: Company registered successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

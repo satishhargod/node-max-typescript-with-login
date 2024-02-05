@@ -1,0 +1,31 @@
+tags:
+  - User
+summary: Get all users
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+parameters:
+  - name: search
+    in: query
+    description: Search term for filtering users
+    required: false
+    type: string
+  - name: page
+    in: query
+    description: Page number for paginated results
+    required: false
+    type: integer
+    format: int32
+  - name: limit
+    in: query
+    description: Page number for paginated results
+    required: false
+    type: integer
+    format: int32
+responses:
+  '200':
+    description: Users retrieved successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

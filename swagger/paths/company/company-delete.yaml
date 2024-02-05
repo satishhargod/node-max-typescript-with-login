@@ -1,0 +1,19 @@
+tags:
+  - Company
+summary: Delete company
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+parameters:
+  - name: slug
+    in: path
+    description: Slug of the company to retrieve
+    required: true
+    type: string
+responses:
+  '200':
+    description: Company deleted successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

@@ -1,0 +1,870 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "proleven",
+    "version": "1.0.0",
+    "description": "API docs",
+    "contact": {
+      "name": "Your Name",
+      "email": "your@email.com"
+    },
+    "license": {
+      "name": "Your License",
+      "url": "https://your-license-url.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:3001/api",
+      "// Replace with your server URL": null,
+      "description": "Local Development Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Auth APIs"
+    },
+    {
+      "name": "User",
+      "description": "Users APIs"
+    },
+    {
+      "name": "Company",
+      "description": "Company APIs"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Logged In successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/forgot-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Forgot Password",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reset password link sent successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/check-forgot-password-token/{userId}/{token}": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Check Forgot Password Token",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token match successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/password-reset": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Password Reset",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "token": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password set successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/update-profile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Update profile",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "file": {
+                    "type": "file",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update profile successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/change-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Change Password",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "oldpassword": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "newpassword": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password changed successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/user-profile/{userId}": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "User Profile",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile display successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Logout",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Logout successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create a new user",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "required": true
+                  },
+                  "contact": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "active": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "role": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all users",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search term for filtering users",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for paginated results",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page number for paginated results",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Users retrieved successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users/{username}": {
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update a new user",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Slug of the company to retrieve",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "contact": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "Username of the company to retrieve",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User retrieved by username successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/companies": {
+      "post": {
+        "tags": [
+          "Company"
+        ],
+        "summary": "Create a new company",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Test Pvt Ltd.",
+                    "required": true
+                  },
+                  "legal_name": {
+                    "type": "string",
+                    "example": "Test Services PVT LTD.",
+                    "required": true
+                  },
+                  "registration_number": {
+                    "type": "string",
+                    "example": "96564748451",
+                    "required": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "testcompany@yopmail.com",
+                    "required": true
+                  },
+                  "address_l1": {
+                    "type": "string",
+                    "example": "Address L1",
+                    "required": true
+                  },
+                  "address_l2": {
+                    "type": "string",
+                    "example": "Address L2",
+                    "required": true
+                  },
+                  "address_city": {
+                    "type": "string",
+                    "example": "Ahmedabad",
+                    "required": true
+                  },
+                  "address_state": {
+                    "type": "string",
+                    "example": "GJ",
+                    "required": true
+                  },
+                  "address_country": {
+                    "type": "string",
+                    "example": "India",
+                    "required": true
+                  },
+                  "address_zip": {
+                    "type": "string",
+                    "example": "382481",
+                    "required": true
+                  },
+                  "website": {
+                    "type": "string",
+                    "example": "http://appdemoserver.com",
+                    "required": true
+                  },
+                  "industry": {
+                    "type": "string",
+                    "example": "IT",
+                    "required": true
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Test",
+                    "required": true
+                  },
+                  "size": {
+                    "type": "string",
+                    "example": "5",
+                    "required": true
+                  },
+                  "manager_first_name": {
+                    "type": "string",
+                    "example": "Jonh",
+                    "required": true
+                  },
+                  "manager_last_name": {
+                    "type": "string",
+                    "example": "Doe",
+                    "required": true
+                  },
+                  "manager_job_title": {
+                    "type": "string",
+                    "example": "Owner",
+                    "required": true
+                  },
+                  "manager_email": {
+                    "type": "string",
+                    "example": "johndoe@yopmail.com",
+                    "required": true
+                  },
+                  "manager_contact": {
+                    "type": "string",
+                    "example": "9638527410",
+                    "required": true
+                  },
+                  "company_logo": {
+                    "type": "file",
+                    "format": "binary",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Company created successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Company"
+        ],
+        "summary": "Get all companies",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search term for filtering companies",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for paginated results",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page number for paginated results",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Company retrieved successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/companies/{slug}": {
+      "patch": {
+        "tags": [
+          "Company"
+        ],
+        "summary": "Update a new company",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Slug of the company to retrieve",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Test"
+                  },
+                  "legal_name": {
+                    "type": "string",
+                    "example": "Test"
+                  },
+                  "registration_number": {
+                    "type": "string",
+                    "example": "124234234"
+                  },
+                  "website": {
+                    "type": "string",
+                    "example": "http:asdasdd"
+                  },
+                  "industry": {
+                    "type": "string",
+                    "example": "sdfsdf"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "sdfsdf"
+                  },
+                  "size": {
+                    "type": "string",
+                    "example": "10"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "ACTIVE"
+                  },
+                  "company_logo": {
+                    "type": "file",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Company updated successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Company"
+        ],
+        "summary": "Get company",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Slug of the company to retrieve",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Company retrieved by slug successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Company"
+        ],
+        "summary": "Delete company",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Slug of the company to retrieve",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Company deleted successfully"
+          },
+          "400": {
+            "description": "Bad request, invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "x-session"
+      },
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-branch",
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "required": true
+        }
+      }
+    }
+  }
+}

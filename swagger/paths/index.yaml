@@ -1,0 +1,63 @@
+# User API
+# /auth/register:
+#   post:
+#     $ref: ./auth/register.yaml
+
+/auth/login:
+  post:
+    $ref: ./auth/login.yaml
+/auth/forgot-password:
+  post:
+    $ref: ./auth/forgot-password.yaml
+
+/auth/check-forgot-password-token/{userId}/{token}:
+  get:
+    $ref: ./auth/check-forgot-password-token.yaml
+
+/auth/password-reset:
+  post:
+    $ref: ./auth/password-reset.yaml
+
+/auth/update-profile:
+  post:
+    $ref: ./auth/update-profile.yaml
+
+/auth/change-password:
+  post:
+    $ref: ./auth/change-password.yaml
+
+/auth/user-profile/{userId}:
+  get:
+    $ref: ./auth/user-profile.yaml
+
+/auth/logout:
+  post:
+    $ref: ./auth/logout.yaml
+
+# User API
+/users:
+  post:
+    $ref: ./user/user-create.yaml
+  get:
+    $ref: ./user/user-get-all.yaml
+
+/users/{username}:
+  patch:
+    $ref: ./user/user-update.yaml
+  get:
+    $ref: ./user/user-get.yaml
+
+# Company API
+/companies:
+  post:
+    $ref: ./company/company-create.yaml
+  get:
+    $ref: ./company/company-get-all.yaml
+
+/companies/{slug}:
+  patch:
+    $ref: ./company/company-update.yaml
+  get:
+    $ref: ./company/company-get.yaml
+  delete:
+    $ref: ./company/company-delete.yaml

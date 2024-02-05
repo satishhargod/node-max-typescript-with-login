@@ -1,0 +1,12 @@
+cookieAuth:
+  type: apiKey
+  in: cookie
+  name: x-session
+ApiKeyAuth:
+  type: apiKey
+  in: header
+  name: x-branch
+  schema:
+    type: string
+    format: uuid
+    required: true

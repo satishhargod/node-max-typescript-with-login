@@ -1,0 +1,4 @@
+# Security Schema
+securitySchemes:
+  $ref: ./security/SecuritySchema.yaml
+

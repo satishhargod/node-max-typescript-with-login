@@ -1,0 +1,26 @@
+tags:
+  - Auth
+summary: Update profile
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            required: true
+          file:
+            type: file
+            required: true
+
+responses:
+  '200':
+    description: Update profile successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

@@ -1,0 +1,8 @@
+- name: Auth
+  description: Auth APIs
+
+- name: User
+  description: Users APIs
+
+- name: Company
+  description: Company APIs

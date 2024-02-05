@@ -1,0 +1,19 @@
+tags:
+  - User
+summary: Get user
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+parameters:
+  - name: username
+    in: path
+    description: Username of the company to retrieve
+    required: true
+    type: string
+responses:
+  '200':
+    description: User retrieved by username successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

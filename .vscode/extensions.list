@@ -1,0 +1,16 @@
+code --install-extension SonarSource.sonarlint-vscode
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension esbenp.prettier-vscode
+code --install-extension dbaeumer.vscode-eslint
+
+code --install-extension mikestead.dotenv
+
+code --install formulahendry.auto-close-tag
+
+code --install-extension kakumei.ts-debug
+code --install-extension Meezilla.json
+
+code --install-extension donjayamanne.githistory
+code --install-extension eamodio.gitlens
+code --install-extension mhutchie.git-graph
+

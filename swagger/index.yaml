@@ -1,0 +1,17 @@
+openapi: '3.0.0'
+info:
+  {
+    title: 'proleven',
+    version: '1.0.0',
+    description: 'API docs',
+    contact: { name: 'Your Name', email: 'your@email.com' },
+    license: { name: 'Your License', url: 'https://your-license-url.com' },
+  }
+servers:
+  [{ url: 'http://127.0.0.1:3001/api', // Replace with your server URL, description: 'Local Development Server' }]
+tags:
+  $ref: ./tags/index.yaml
+paths:
+  $ref: ./paths/index.yaml
+components:
+  $ref: ./components/index.yaml

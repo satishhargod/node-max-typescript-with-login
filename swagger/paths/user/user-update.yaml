@@ -1,0 +1,39 @@
+tags:
+  - User
+summary: Update a new user
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+parameters:
+  - name: slug
+    in: path
+    description: Slug of the company to retrieve
+    required: true
+    type: string
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          first_name:
+            type: string
+          last_name:
+            type: string
+          email:
+            type: string
+            format: email
+          contact:
+            type: string
+          active:
+            type: string
+          role:
+            type: string
+
+responses:
+  '200':
+    description: User Updated successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error

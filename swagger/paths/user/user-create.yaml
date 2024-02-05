@@ -1,0 +1,39 @@
+tags:
+  - User
+summary: Create a new user
+security:
+  # - cookieAuth: []
+  - ApiKeyAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          first_name:
+            type: string
+            required: true
+          last_name:
+            type: string
+            required: true
+          email:
+            type: string
+            format: email
+            required: true
+          contact:
+            type: string
+            required: true
+          active:
+            type: string
+            required: true
+          role:
+            type: string
+            required: true
+
+responses:
+  '200':
+    description: User created successfully
+  '400':
+    description: Bad request, invalid data
+  '500':
+    description: Internal server error
